@@ -11,12 +11,12 @@ script instead. Therefore i adopted and improved the original script and moved i
 
 ## Usage
 
-    usage: iadl.sh <collectionname> <extensions> <destination-dir>
+    usage: iadl.sh <collection> <extensions> <destination-dir>
 
       <collection>
           Name of collection to download files from. The collection name must
-          be entered exactly as shown: lower case, with hyphens. See the
-          archive.org entry page for the collection name.
+          be entered exactly as shown. See the archive.org entry page for the
+          collection name.
 
       <extensions>
           Comma-separated list of accepted file extensions.
