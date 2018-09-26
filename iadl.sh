@@ -34,7 +34,7 @@ echo "Downloading list of entries for collection name $1 ..."
 
 wget -O - -nd -q "https://archive.org/advancedsearch.php?q=$1&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&sort%5B%5D=&sort%5B%5D=&rows=9999&page=1&callback=callback&save=yes&output=csv" 2>/dev/null | tail -n +2 | sed 's/"//g' > identifiers.txt
 
-if [ $? -ne 0 ]; then
+if [ ${PIPESTATUS[0]} -ne 0 ]; then
     echo "Error downloading identifiers."
     exit 1
 fi
