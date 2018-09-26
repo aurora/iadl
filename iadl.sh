@@ -53,9 +53,10 @@ fi
 
 echo "Beginning wget download of $num identifiers ..."
 
-wget -r -H -nc -np -nH -nd -e robots=off \
+wget -r -H -nc -nv -np -nH -nd -e robots=off \
     --domains archive.org --exclude-domains blog.archive.org \
-    -i $tmp -B 'https://archive.org/download/' -A $2 1>/dev/null 2>&1
+    -i $tmp -B 'https://archive.org/download/' -A $2 2>&1 \
+    | awk -v "ORS=" '{ print "."; fflush(); } END { print "\n" }'
 
 if ls -U *_text.pdf > /dev/null 2>&1; then
     echo "Found text-format PDFs, moving into text/ directory ..."
