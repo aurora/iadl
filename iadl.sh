@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+#
+# This shell script makes it possible to download an entire collection from archive.org.
+# Please have a look at the repository at https://github.com/aurora/iadl for details and
+# for license and copyright information.
+#
+
 if [ "$3" = "" ]; then
     echo "usage: iadl.sh <collectionname> <extensions> <destination-dir>"
     echo

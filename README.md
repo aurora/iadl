@@ -24,3 +24,6 @@ script instead. Therefore i adopted and improved the original script and moved i
       <destination-dir>
           The destination directory to download the files to.
 
+## Acknowledgements
+
+* The original script was written by Gareth Halfacree and released under the WTFPL -- https://github.com/ghalfacree/bash-scripts/issues/1
