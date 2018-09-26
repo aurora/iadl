@@ -5,8 +5,8 @@ if [ "$3" = "" ]; then
     echo
     echo "  <collection>"
     echo "      Name of collection to download files from. The collection name must"
-    echo "      be entered exactly as shown: lower case, with hyphens. See the"
-    echo "      archive.org entry page for the collection name."
+    echo "      be entered exactly as shown. See the archive.org entry page for the"
+    echo "      collection name."
     echo
     echo "  <extensions>"
     echo "      Comma-separated list of accepted file extensions."
