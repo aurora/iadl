@@ -11,19 +11,27 @@ script instead. Therefore i adopted and improved the original script and moved i
 
 ## Usage
 
-    usage: iadl.sh <collection> <extensions> <destination-dir>
+    usage: iadl.sh [OPTIONS] <collection> <destination-dir>
+    
+    ARGUMENTS
 
-      <collection>
-          Name of collection to download files from. The collection name must
-          be entered exactly as shown. See the archive.org entry page for the
-          collection name.
+        <collection>
+            Name of collection to download files from. The collection name must
+            be entered exactly as shown. See the archive.org entry page for the
+            collection name.
 
-      <extensions>
-          Comma-separated list of accepted file extensions.
+        <destination-dir>
+            The destination directory to download the files to.
 
-      <destination-dir>
-          The destination directory to download the files to.
+    OPTIONS
 
+        -A, --accept ACCEPT     Specify a comma-separated list of file name
+                                suffixes or patterns to accept.
+        -R, --reject REJECT     Specify a comma-separated list of file name
+                                suffixes or patterns to reject.
+        -h, --help              Display this usage information and exit.
+            --version           Show version and exit.
+        
 ## Acknowledgements
 
 * The original script was written by Gareth Halfacree and released under the WTFPL -- https://github.com/ghalfacree/bash-scripts/issues/1
