@@ -14,7 +14,7 @@ accept=""
 reject=""
 
 function showusage {
-    echo "usage: $(basename $0) [options] <collection> <destination-dir>
+    echo "usage: $(basename $0) [OPTIONS] <collection> <destination-dir>
     
 ARGUMENTS
 
