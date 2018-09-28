@@ -6,29 +6,75 @@
 # for license and copyright information.
 #
 
-if [ "$3" = "" ]; then
-    echo "usage: iadl.sh <collectionname> <extensions> <destination-dir>"
-    echo
-    echo "  <collection>"
-    echo "      Name of collection to download files from. The collection name must"
-    echo "      be entered exactly as shown. See the archive.org entry page for the"
-    echo "      collection name."
-    echo
-    echo "  <extensions>"
-    echo "      Comma-separated list of accepted file extensions."
-    echo
-    echo "  <destination-dir>"
-    echo "      The destination directory to download the files to."
-    echo
+version="0.0.1"
+version_date="2018-09-28"
+version_string="iadl.sh $version ($version_date)"
+
+accept=""
+reject=""
+
+function showusage {
+    echo "usage: $(basename $0) [options] <collection> <destination-dir>
+    
+ARGUMENTS
+
+    <collection>
+        Name of collection to download files from. The collection name must
+        be entered exactly as shown. See the archive.org entry page for the
+        collection name.
+
+    <destination-dir>
+        The destination directory to download the files to.
+
+OPTIONS
+
+    -A, --accept ACCEPT     Specify a comma-separated list of file name
+                            suffixes or patterns to accept.
+    -R, --reject REJECT     Specify a comma-separated list of file name
+                            suffixes or patterns to reject.
+    -h, --help              Display this usage information and exit.
+        --version           Show version and exit.
+"
+}
+
+while [[ "${1:0:1}" = "-" ]]; do
+    case $1 in
+        -A|--accept)
+            accept="--accept '$2'"
+            shift
+            ;;
+        --R|--reject)
+            reject="--reject '$2'"
+            shift
+            ;;
+        --version)
+            echo "$version_string"
+            exit 1
+            ;;
+        -h|-\?|--help)
+            showusage
+            exit 1
+            ;;
+        *)
+            showusage
+            exit 1
+            ;;
+    esac
+    
+    shift
+done
+
+if [ "$2" = "" ]; then
+    showusage
     exit 1
 fi
 
-if [ ! -d "$3" ]; then
+if [ ! -d "$2" ]; then
     echo "Destination directory does not exist."
     exit 1
 fi
 
-cd "$3"
+cd "$2"
 
 echo "Downloading list of entries for collection name $1 ..."
 
@@ -55,7 +101,7 @@ echo "Beginning wget download of $num identifiers ..."
 
 wget -r -H -nc -nv -np -nH -nd -e robots=off \
     --domains archive.org --exclude-domains blog.archive.org \
-    -i $tmp -B 'https://archive.org/download/' -A $2 2>&1 \
+    -i $tmp -B 'https://archive.org/download/' $accept $reject 2>&1 \
     | awk -v "ORS=" '{ print "."; fflush(); } END { print "\n" }'
 
 if ls -U *_text.pdf > /dev/null 2>&1; then
