@@ -2,7 +2,7 @@
 
 This shell script makes it possible to download an entire collection from archive.org. It was originally
 developed by @ghalfacree (https://github.com/ghalfacree/bash-scripts/blob/master/archivedownload.sh) but he
-marked it at obsolete, because in the meantime the organisation behind Internet Archive developed an own
+marked it as obsolete, because in the meantime the organisation behind Internet Archive developed an own
 tool that allows downloading entire collections besides lot's of other things. So it's probably best to
 look at their repository at https://github.com/jjjake/internetarchive.
 
